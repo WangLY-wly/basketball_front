@@ -8,7 +8,7 @@
         @select="handleSelect"
       >
         <el-menu-item index="1">首页</el-menu-item>
-        <el-menu-item index="2">NBA新闻</el-menu-item>
+        <el-menu-item index="2">新闻</el-menu-item>
         <el-menu-item index="3">比赛日程</el-menu-item>
         <el-menu-item index="4">球队排名</el-menu-item>
       </el-menu>
