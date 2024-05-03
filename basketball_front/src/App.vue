@@ -1,28 +1,34 @@
 <template>
-  <div id="app">
-    <MainNavbar/>
-    <el-container>
-      <el-main>
-        <!-- 这里将是内容显示区域，可以根据需要添加更多的组件 -->
-        <div>这里是内容区域</div>
-      </el-main>
-    </el-container>
-  </div>
+    <div id="app">
+        <!-- 只有在非登录页面时才显示导航栏 -->
+        <MainNavbar v-if="!isLoginPage"/>
+        <router-view></router-view> <!-- 这里将根据路由动态显示组件 -->
+    </div>
 </template>
 
 <script>
 import MainNavbar from './components/MainNavbar.vue'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
 
 export default {
-  name: 'App',
-  components: {
-    MainNavbar
-  }
+    name: 'App',
+    components: {
+        MainNavbar
+    },
+    setup() {
+        const route = useRoute()
+        // 根据当前路由路径判断是否为登录页面
+        const isLoginPage = computed(() => route.path === '/login'||route.path === '/Login')
+        return {
+            isLoginPage
+        }
+    }
 }
 </script>
 
 <style>
 #app {
-  text-align: center;
+    text-align: center;
 }
 </style>
