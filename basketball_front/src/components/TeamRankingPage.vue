@@ -117,7 +117,10 @@ h1, h2 {
     position: sticky;
     top: 0;
 }
-
+h1 {
+    text-align: center;
+    color: #409EFF;
+}
 .ranking-table .rank-circle {
     width: 25px;
     height: 25px;

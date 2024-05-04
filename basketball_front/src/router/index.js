@@ -9,6 +9,9 @@ import GameSchedule from '../components/GameSchedule.vue';
 import CategoryNewsPage from '../components/CategoryNewsPage.vue';
 import MainTeamNewsPage from "../components/MainTeamNewsPage.vue";
 import MainTeamSchedulePage from "../components/MainTeamSchedulePage.vue";
+import NewsSearchPage from '../components/NewsSearchPage.vue';
+import RulesPage from '../components/RulesPage.vue';
+import UserCenterPage from '../components/UserCenterPage.vue';
 const routes = [
     {
         path: '/',
@@ -59,6 +62,21 @@ const routes = [
         path: '/mainTeamSchedule',
         name: 'MainTeamSchedule',
         component: MainTeamSchedulePage
+    },
+    {
+        path: '/newsSearch',
+        name: 'NewsSearch',
+        component: NewsSearchPage
+    },
+    {
+        path: '/rules',
+        name: 'RulesPage',
+        component: RulesPage
+    },
+    {
+        path: '/userCenter',
+        name: 'UserCenter',
+        component: UserCenterPage
     }
 ];
 // 这样在/login后显示登录,在/里显示主页

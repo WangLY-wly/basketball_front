@@ -157,7 +157,10 @@ export default {
     display: flex;
     align-items: center;
 }
-
+h1 {
+    text-align: center;
+    color: #409EFF;
+}
 .team {
     display: flex;
     align-items: center;

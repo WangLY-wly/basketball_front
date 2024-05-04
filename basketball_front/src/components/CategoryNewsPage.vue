@@ -50,6 +50,7 @@ export default {
             currentPage: 1,
             pageSize: 12,
             totalItems: 0,
+            haveSelected:false,
             sections: [
                 {
                     title: '东部分区',
@@ -219,6 +220,7 @@ export default {
         fetchTeamNews(teamId) {
             this.activeTeam=teamId;
             const token = localStorage.getItem('token');
+            this.haveSelected=true;
             axios.get(`http://192.168.43.201:8088/post/loadnewsCategory`, {
                 headers: {'Authorization': token},
                 params: {
@@ -276,11 +278,15 @@ export default {
         },
         handleSizeChange(newSize) {
             this.pageSize = newSize;
-            this.fetchTeamNews(this.activeTeam);
+            if(this.haveSelected){
+                this.fetchTeamNews(this.activeTeam);
+            }
         },
         handleCurrentChange(newPage) {
             this.currentPage = newPage;
-            this.fetchTeamNews(this.activeTeam);
+            if(this.haveSelected){
+                this.fetchTeamNews(this.activeTeam);
+            }
         }
     }
 }

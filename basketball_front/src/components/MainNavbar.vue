@@ -17,9 +17,8 @@
         <el-menu-item index="8">主队资讯</el-menu-item>
         <el-menu-item index="9">主队赛程</el-menu-item>
         <el-menu-item index="10">资讯搜索</el-menu-item>
-        <el-menu-item index="11">个人中心</el-menu-item>
-
-      </el-menu>
+        <el-menu-item index="11">篮球与规则</el-menu-item>
+     <el-menu-item index="12">个人中心</el-menu-item></el-menu>
     </el-header>
   </template>
   
@@ -46,7 +45,10 @@
                 '6': '/gameSchedule',
                 '7': '/categoryNews',
                 '8': '/mainTeamNews',
-                '9':'/mainTeamSchedule'
+                '9': '/mainTeamSchedule',
+                '10': '/newsSearch',
+                '11': '/rules',
+                '12': '/userCenter'
                 // 其他 key 对应的路径可以继续添加
             };
             return routeMap[key] || '/';
@@ -56,8 +58,14 @@
   </script>
   
   <style scoped>
+  .header-menu {
+    display: flex;
+    justify-content: space-between; /* 两端对齐 */
+  }
+  
   .el-header {
     background-color: #b3c0d1;
   }
+  
   </style>
   

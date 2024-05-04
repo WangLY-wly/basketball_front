@@ -194,6 +194,7 @@ export default {
     },
     mounted() {
         this.fetchMainTeam();
+
     }
 }
 </script>
@@ -240,22 +241,6 @@ h1 {
     text-align: right;
 }
 
-/*.dialog-table {
-    --el-font-size: 26px!important; !* Element Plus 的字体大小变量 *!
-}
-
-.dialog-table .el-table th,
-.dialog-table .el-table td {
-    padding: 15px; !* 更大的内边距 *!
-    font-size: 16px; !* 更大的字体大小 *!
-    font-weight: bold; !* 加粗字体 *!
-}
-
-.dialog-table .el-table th {
-    background-color: #eef1f6; !* 浅蓝背景 *!
-    color: #333; !* 更深的文字颜色 *!
-}样式修改没有生效
-*/
 .score-dialog .el-dialog__header {
     color: #409EFF;
     font-size: 20px;
@@ -283,17 +268,5 @@ h1 {
     margin: 0 10px; /* 增加按钮之间的间距 */
 }
 
-.el-button--primary {
-    background-color: #409EFF;
-    border-color: #409EFF;
-}
 
-.el-button--primary:hover {
-    background-color: #66b1ff;
-    border-color: #66b1ff;
-}
-
-.el-dialog {
-    border-radius: 8px; /* 统一对话框圆角 */
-}
 </style>

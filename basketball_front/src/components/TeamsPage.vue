@@ -196,6 +196,10 @@ export default {
 </script>
 
 <style>
+h2 {
+    text-align: center;
+    color: #409EFF;
+}
 .teams-page .team-card {
     cursor: pointer;
     transition: transform 0.3s;

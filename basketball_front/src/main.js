@@ -5,13 +5,25 @@ import App from './App.vue'
 import router from './router';  // 确保引入路由配置
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
+
+
+(function() {
+    const originalWarn = console.warn;
+    console.warn = function(message, ...args) {
+        // 检查消息是否与ResizeObserver循环相关
+        if (message.includes("ResizeObserver loop")) {
+            return;
+        }
+        // 否则，调用原始的console.warn
+        originalWarn(message, ...args);
+    };
+})();
 const app = createApp(App)
+// app.config.errorHandler = (err, vm, info) => {
+//     console.error('捕获到异常:', err, info);
+//     // 这里可以添加跳转到自定义错误页面的逻辑
 
-app.config.errorHandler = (err, vm, info) => {
-    console.error('捕获到异常:', err, info);
-    // 这里可以添加跳转到自定义错误页面的逻辑
-
-};
+// };
 app.use(ElementPlus)
 app.use(router);  // 使用路由
 app.mount('#app')
