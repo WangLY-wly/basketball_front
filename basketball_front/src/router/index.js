@@ -82,8 +82,12 @@ const routes = [
     {
         path: '/admin',
         name: 'Admin',
+<<<<<<< Updated upstream
         component: () => import('../components/AdminPage.vue'),
         meta: { requiresAdmin: true }// 添加标记，需要管理员权限
+=======
+        component: AdminPage
+>>>>>>> Stashed changes
     }
 ];
 // 这样在/login后显示登录,在/里显示主页
