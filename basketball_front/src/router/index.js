@@ -12,6 +12,7 @@ import MainTeamSchedulePage from "../components/MainTeamSchedulePage.vue";
 import NewsSearchPage from '../components/NewsSearchPage.vue';
 import RulesPage from '../components/RulesPage.vue';
 import UserCenterPage from '../components/UserCenterPage.vue';
+import AdminPage from '../components/AdminPage.vue';
 const routes = [
     {
         path: '/',
@@ -77,6 +78,16 @@ const routes = [
         path: '/userCenter',
         name: 'UserCenter',
         component: UserCenterPage
+    },
+    {
+        path: '/admin',
+        name: 'Admin',
+<<<<<<< Updated upstream
+        component: () => import('../components/AdminPage.vue'),
+        meta: { requiresAdmin: true }// 添加标记，需要管理员权限
+=======
+        component: AdminPage
+>>>>>>> Stashed changes
     }
 ];
 // 这样在/login后显示登录,在/里显示主页

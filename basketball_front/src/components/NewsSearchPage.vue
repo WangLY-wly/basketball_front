@@ -5,6 +5,7 @@
         <el-input v-model="searchKeyword" style="width: 100%; height:54px" size="large" placeholder="输入关键词"
           :prefix-icon="Search">
           <template #append>
+
             <el-button class="search-button" @click="searchTeams">
               <svg t="1714813007489" class="icon" viewBox="0 0 1025 1024" version="1.1"
                 xmlns="http://www.w3.org/2000/svg" p-id="4206" width="35" height="35">
@@ -25,12 +26,12 @@
             <h2 class="conference-title">{{ conference }}</h2>
             <div class="teams">
               <div class="team" v-for="team in teams" :key="team.id" @click="selectTeamLogo(team)">
-                <img :src="team.logo" alt="Team Logo" class="team-logo">
-                <!-- <span>{{ team.name }}</span> -->
+                <div class="logo-name">
+                  <img :src="team.logo" alt="Team Logo" class="team-logo">
+                  <span class="team-name">{{ team.name }}</span>
+                </div>
               </div>
-
             </div>
-
           </div>
         </div>
       </el-col>
@@ -154,8 +155,12 @@ export default {
 
 .team {
   display: flex;
-  flex-direction: row;
+
+  flex-direction: column;
   margin: 4px;
+  align-items: center;
+  
+
 }
 
 .conference {
@@ -163,6 +168,7 @@ export default {
   flex-direction: column;
   max-width: 250px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 
@@ -171,10 +177,9 @@ export default {
   background-color: rgb(229, 229, 229);
   padding: 23px;
   border-radius: 13px;
-  width: max-content;
-  height: min-content;
+  width: 580px;
   position: relative;
-  left: -30px;
+  left: -175px;
 }
 
 /*
@@ -182,6 +187,17 @@ export default {
 TODO://展示图标
 
 */
+
+.team-name {
+  width: 130px;
+}
+
+.logo-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .team-logo {
   width: 38px;
@@ -192,7 +208,7 @@ TODO://展示图标
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 230px;
+  width: 580px;
 }
 
 .dropdown-btn {
@@ -204,7 +220,7 @@ TODO://展示图标
   min-width: 130px;
   max-width: 130px;
   position: relative;
-  left: -70px;
+  left: -120px;
 }
 
 /*

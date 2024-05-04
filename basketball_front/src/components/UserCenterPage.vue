@@ -2,16 +2,17 @@
     <div class="user-center">
       <h1>个人中心</h1>
       <el-form :model="userData">
-        <el-form-item label="用户名">
+        <el-form-item label="用户名 ">
           <el-input v-model="userData.userName" :disabled="!isEditing"></el-input>
         </el-form-item>
-        <el-form-item label="邮箱">
+        <el-form-item label="邮箱 2 ">
           <el-input v-model="userData.email" :disabled="!isEditing"></el-input>
         </el-form-item>
-        <el-form-item label="性别" v-if="!isEditing">
-            <span>{{ genderText[userData.gender] }}</span>
+        <el-form-item label="性别  " v-if="!isEditing">
+            <!-- <span>{{ genderText[userData.gender] }}</span> -->
+            <el-tag :type="'info'">{{ genderText[userData.gender] }}</el-tag>
           </el-form-item>
-        <el-form-item label="性别" v-if="isEditing">
+        <el-form-item label="性别  " v-if="isEditing">
           <el-radio-group v-model="userData.gender">
             <el-radio :label="1">男</el-radio>
             <el-radio :label="2">女</el-radio>
@@ -20,7 +21,7 @@
         <el-form-item label="个性签名">
           <el-input v-model="userData.sign" :disabled="!isEditing"></el-input>
         </el-form-item>
-        <el-form-item label="角色">
+        <el-form-item label="角色  ">
           <el-tag :type="roleColor[userData.roleId]">{{ roleText[userData.roleId] }}</el-tag>
         </el-form-item>
         <el-form-item>
@@ -101,9 +102,28 @@
     padding: 20px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   }
-  h1 {
+  
+  .user-center h1 {
     text-align: center;
     color: #409EFF;
+    font-size: 24px;
+  }
+  
+  .el-form-item {
+    margin-bottom: 20px;
+  }
+  
+  .el-input, .el-radio {
+    font-size: 16px; /* Increased font size for better readability */
+  }
+  
+  .el-tag {
+    font-size: 16px;
+    line-height: 30px; /* Increased line height for better alignment with inputs */
+  }
+  
+  .el-button {
+    font-size: 16px;
   }
   </style>
   

@@ -12,7 +12,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue';
     const originalWarn = console.warn;
     console.warn = function(message, ...args) {
         // 检查消息是否与ResizeObserver循环相关
-        if (message.includes("ResizeObserver loop")) {
+        if (typeof message === 'string'&&message.includes("ResizeObserver loop")) {
             return;
         }
         // 否则，调用原始的console.warn
