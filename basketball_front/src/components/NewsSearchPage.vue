@@ -2,11 +2,18 @@
   <div class="news-search-page">
     <el-row class="search-container">
       <el-col :span="18">
-        <el-input v-model="searchKeyword" style="width: 100%; height:54px" size="large" placeholder="Please Input"
-          :prefix-icon="Search" />
+        <el-input v-model="searchKeyword" style="width: 100%; height:54px" size="large" placeholder="输入关键词"
+          :prefix-icon="Search" >
+            <template #append>
+            <el-button class="search-button">
+            <svg t="1714813007489" class="icon" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4206" width="35" height="35"><path d="M954.742349 919.778713 756.657398 721.798199c28.399507-32.029181 51.217816-68.139568 67.935815-107.665637 20.543235-48.571072 30.960244-100.152367 30.960244-153.311469s-10.417009-104.739373-30.960244-153.311469c-19.837778-46.902139-48.232166-89.019662-84.395796-125.182268-36.161582-36.162606-78.279105-64.556994-125.182268-84.394772-48.571072-20.543235-100.152367-30.960244-153.311469-30.960244S356.964308 77.389348 308.393236 97.932584c-46.902139 19.837778-89.019662 48.232166-125.182268 84.394772s-64.556994 78.280129-84.394772 125.182268c-20.543235 48.571072-30.960244 100.152367-30.960244 153.311469s10.417009 104.739373 30.960244 153.311469c19.837778 46.903163 48.232166 89.019662 84.394772 125.182268 36.162606 36.162606 78.280129 64.558018 125.182268 84.395796 48.571072 20.543235 100.152367 30.960244 153.311469 30.960244s104.739373-10.417009 153.311469-30.960244c39.188187-16.574656 75.020078-39.145184 106.844481-67.206809l198.14024 198.03478c4.798951 4.796903 11.083559 7.192794 17.371238 7.192794 6.290751 0 12.582527-2.402035 17.380453-7.202009C964.345369 944.930456 964.341274 929.372518 954.742349 919.778713zM461.704705 805.524373c-92.072888 0-178.635225-35.85544-243.741021-100.960212s-100.961236-151.669157-100.961236-243.742045 35.85544-178.635225 100.961236-243.741021 151.668133-100.961236 243.741021-100.961236 178.636249 35.85544 243.742045 100.961236 100.960212 151.668133 100.960212 243.741021-35.85544 178.636249-100.960212 243.742045S553.777593 805.524373 461.704705 805.524373z" fill="#252334" p-id="4207"></path></svg>
+            </el-button>
+      </template>
+
+          </el-input>
       </el-col>
       <el-col :span="6" class="left-align" id="select">
-        <button @click="toggleDropdown" class="dropdown-btn">{{ selectedTeam ? selectedTeam.name : 'Select a Team'
+        <button @click="toggleDropdown" class="dropdown-btn">{{ selectedTeam ? selectedTeam.name : '筛选队伍'
           }}<span class="arrow" v-if="!isDropdownOpen">▼</span><span class="arrow" v-else>▲</span></button>
         <div v-if="isDropdownOpen" class="dropdown-content">
           <div class="conference" v-for="(teams, conference) in groupedTeams" :key="conference">
@@ -91,6 +98,16 @@ export default {
 
 <style scoped>
 /* Add your existing styles here */
+.news-search-page {
+  margin-top: 10px;
+}
+
+.search-button {
+  display: flex;
+  
+}
+
+
 .dropdown-content {
   display: block;
   /* Override to show the dropdown */
@@ -101,6 +118,7 @@ export default {
 .team {
   display: flex;
   flex-direction: row;
+  margin: 4px; 
 }
 
 .conference {
@@ -110,24 +128,33 @@ export default {
   flex-wrap: wrap;
 }
 
+/*
+
+TODO://展示图标
+
+*/
+
 .team-logo {
-  width: 30px;
-  height: 30px;
+  width: 38px;
+  height: 38px;
 }
 
 .teams {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 250px;
+  max-width: 230px;
 }
 
 .dropdown-btn {
   height: 56px;
   background-color: #fff;
-  border: solid 1px #333;
-  width: 120px;
-  min-width: 120px;
-  max-width: 120px
+  border: solid 1px grey;
+  width: 130px;
+  border-radius: 8px;
+  min-width: 130px;
+  max-width: 130px;
+  position: relative;
+  left: -70px;
 }
 </style>

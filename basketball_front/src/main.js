@@ -5,7 +5,7 @@ import App from './App.vue'
 import router from './router';  // 确保引入路由配置
 import axios from 'axios';
 import { ElMessage } from 'element-plus';
-
+import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 
 (function() {
     const originalWarn = console.warn;
@@ -26,6 +26,9 @@ const app = createApp(App)
 // };
 app.use(ElementPlus)
 app.use(router);  // 使用路由
+for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
+    app.component(key, component)
+  }
 app.mount('#app')
 
 /*window.addEventListener('beforeunload', function() {
