@@ -5,7 +5,8 @@
         <el-input v-model="searchKeyword" style="width: 100%; height:54px" size="large" placeholder="输入关键词"
           :prefix-icon="Search">
           <template #append>
-            <el-button class="search-button">
+
+            <el-button class="search-button" @click="searchTeams">
               <svg t="1714813007489" class="icon" viewBox="0 0 1025 1024" version="1.1"
                 xmlns="http://www.w3.org/2000/svg" p-id="4206" width="35" height="35">
                 <path
@@ -35,6 +36,20 @@
         </div>
       </el-col>
     </el-row>
+  </div>
+  <div class="news-search-page">
+    <!-- 现有的代码... -->
+  
+    <!-- 搜索结果展示区域 -->
+    <div v-if="showResults" class="search-results">
+      <h2>搜索结果：</h2>
+      <div v-for="result in searchResults" :key="result.postId" class="search-item">
+        <a :href="result.staticUrl" target="_blank">
+          <h3>{{ result.title }}</h3>
+          <p>{{ result.description }}</p>
+        </a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -77,7 +92,9 @@ export default {
         { id: '28', name: '印第安纳步行者', logo: 'https://gdc.hupucdn.com/gdc/nba/team/logo/83b033b5c036f590.png', conference: '东部' },
         { id: '29', name: '芝加哥公牛', logo: 'https://gdc.hupucdn.com/gdc/nba/team/logo/0d490533faca1986.png', conference: '东部' },
         { id: '30', name: '底特律活塞', logo: 'https://gdc.hupucdn.com/gdc/nba/team/logo/86e9f9cbf13706fb.png', conference: '东部' }
-      ]
+      ],
+      searchResults: [],  // 存储搜索结果
+      showResults: false,
 
     };
   },
@@ -97,6 +114,22 @@ export default {
     toggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
+    searchTeams() {
+    const teamId = this.selectedTeam ? this.selectedTeam.id : -1;
+    axios.post('http://192.168.43.201:8088/post/search', {
+      teamId: teamId,
+      queryStr: this.searchKeyword,
+      totalSize: 100,
+      current: 1
+    })
+    .then(response => {
+      this.searchResults = response.data.data.records;
+      this.showResults = true;  // 显示搜索结果
+    })
+    .catch(error => {
+      console.error('Search error:', error);
+    });
+  }
   }
 };
 </script>
@@ -122,10 +155,12 @@ export default {
 
 .team {
   display: flex;
+
   flex-direction: column;
   margin: 4px;
   align-items: center;
   
+
 }
 
 .conference {
@@ -186,5 +221,29 @@ TODO://展示图标
   max-width: 130px;
   position: relative;
   left: -120px;
+}
+
+/*
+搜索结果渲染
+*/
+
+.search-results {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.search-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.search-item h3 {
+  color: #333;
+}
+
+.search-item p {
+  color: #666;
 }
 </style>
