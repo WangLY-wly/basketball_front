@@ -7,6 +7,11 @@ import axios from 'axios';
 import { ElMessage } from 'element-plus';
 const app = createApp(App)
 
+app.config.errorHandler = (err, vm, info) => {
+    console.error('捕获到异常:', err, info);
+    // 这里可以添加跳转到自定义错误页面的逻辑
+
+};
 app.use(ElementPlus)
 app.use(router);  // 使用路由
 app.mount('#app')
