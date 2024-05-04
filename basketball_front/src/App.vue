@@ -24,10 +24,12 @@ export default {
             isLoginPage
         }
     }
+
 }
 </script>
 
 <style>
+
 #app {
     text-align: center;
 }
